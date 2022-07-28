@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package protobuf;
+option go_package = "github.com/golang/protobuf/ptypes/protobuf";
+
+message User {
+  string Name = 1;
+  string Email = 2;
+  string Password = 3;
+  int32 UserId = 4;
+}
+
+message SignupUserRequest {
+  User user = 1;
+}
+
+message SignUpUserResponse {
+  string Email = 1;
+  string Name = 2;
+}
+
+message LoginUserRequest {
+  string Email = 1;
+  string Password = 2;
+}
+
+message LoginUserResponse {
+  string Name = 1;
+}
+
+message UpdateUserPasswordResponse {
+  string Email = 1;
+}
+
+message UpdateUserPasswordRequest {
+  string Email = 1;
+  string OldPassword = 2;
+  string NewPassword = 3;
+}
+
+message DeleteUserRequest {
+  string Email = 1;
+  string Password = 2;
+}
+
+message DeleteUserResponse {
+  string Email = 1;
+}
+
+service LoginSignupService {
+  rpc SignupUser(SignupUserRequest) returns (SignUpUserResponse);
+  rpc LoginUser(LoginUserRequest) returns (LoginUserResponse);
+  rpc UpdateUserPassword(UpdateUserPasswordRequest) returns (UpdateUserPasswordResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
