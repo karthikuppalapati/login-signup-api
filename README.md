@@ -1,6 +1,6 @@
 # login-signup-api
 
-This is a simple api made using gRPC and protocol buffers.
+This is a simple API made using gRPC and Protocol Buffers.
 
 Users can 
 1. Signup for new account
